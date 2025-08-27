@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="confirmation-card">
+    <h2>Confirmar Eliminación</h2>
+    <p>¿Estás seguro de que deseas eliminar al estudiante <strong>{{ estudiante.nombre }}</strong>?</p>
+    <p>Teléfono: {{ estudiante.telefono }}</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+        <a href="{% url 'inicio' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Listado de Estudiantes</h2>
+
+{% if estudiantes %}
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for estudiante in estudiantes %}
+        <tr>
+            <td>{{ estudiante.nombre }}</td>
+            <td>{{ estudiante.telefono }}</td>
+            <td>
+                <a href="{% url 'editar_estudiante' estudiante.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'borrar_estudiante' estudiante.id %}" class="btn btn-danger">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay estudiantes registrados.</p>
+{% endif %}
+
+<a href="{% url 'agregar_estudiante' %}" class="btn btn-success">Agregar Nuevo Estudiante</a>
+{% endblock %}
